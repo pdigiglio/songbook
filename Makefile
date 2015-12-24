@@ -50,7 +50,7 @@ dataFolder = $(wildcard data/*.tab)
 
 outputDirectory=lilyOutput/
 MAIN=songbook
-$(MAIN): %: %.lytex $(dataFolder) Makefile
+$(MAIN): %: %.tex $(dataFolder) Makefile
 	@echo "`tput bold`$(lilyPond)`tput sgr0`"\
 		"`tput setaf 1`--output=`tput sgr0`$(outputDirectory)"\
 		"`tput setaf 1`--$(format)`tput sgr0`"\
