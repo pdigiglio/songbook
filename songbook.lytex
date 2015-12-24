@@ -21,7 +21,8 @@
 %\notenamesout{LA}{SI}{DO}{RE}{MI}{FA}{SOL}
 % ---------------------------------------------------------------------------------------
 
-%\usepackage{misixtex}
+% Uncomment to use musictex
+%\usepackage{musixtex}
 
 \begin{document}
 
