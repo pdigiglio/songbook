@@ -61,7 +61,8 @@ $(MAIN): %: %.lytex $(dataFolder) Makefile
 		"`tput setaf 1`$(OPTIONS)`tput sgr0`"\
 		"`tput setaf 2`$(MAIN).tex`tput sgr0`"
 	@cd $(outputDirectory) &&\
-	  $(LaTeX) $(OPTIONS) $(MAIN).tex -f -output-directory=..
+	  $(LaTeX) $(OPTIONS) $(MAIN).tex -f &&\
+	  mv $(MAIN).pdf ..
 
 # One can link the file in .. instead of generating it there
 #	@echo "\n`tput bold`ln`tput sgr0`"\
