@@ -26,86 +26,8 @@
 \begin{document}
 
 \begin{songs}{}
-\songcolumns{1}
-\beginsong{Walk Of Life}[
-  by={Dire Straits},
-]
 
-\ifchorded%
-{%
-  \nolyrics Intro: % \[E] \[A] \[B] \[A]
-
-  \begin{lilypond}
-	\new TabStaff \relative c' {
-	  a,8 a' <c e> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	  d,8 a' <d f> a
-	}
-  \end{lilypond}
-}%
-\fi%
-
-\beginverse
-\[E]Here comes Johnny singing oldies, goldies
-Be-Bop-A-Lula, Baby What I Say
-Here comes Johnny singing ``I Gotta Woman''  
-Down in the tunnels, trying to make it pay
-\[A]He got the action, He got the motion
-\[E]Yeah the boy can play
-\[A]Dedication, devotion
-\[E]Turning all the night time into the day
-\endverse
-
-\beginchorus
-\[E]He do the song about the sweet lovin' w\[B]oman
-He do the \[E]song about the knife\[A]
-He do the \[E7]walk\[B], he do the walk of li\[A]fe\[B]. Yeah, he do the walk of life
-\endchorus
-
-\chordsoff
-\beginverse
-Here comes Johnny and he'll tell you the story
-Hand me down my walkin' shoes
-Here come Johnny with the power and the glory
-Backbeat the talkin' blues
-He got the action, He got the motion
-Yeah the boy can play
-Dedication, devotion
-Turning all the night time into the day
-\endverse
-
-\beginchorus
-He do the song about the sweet lovin' woman
-He do the song about the knife
-He do the walk, he do the walk of life.  Yeah, he do the walk of life
-\endchorus
-
-\beginverse
-Here comes Johnny singing oldies, goldies  Be-Bop-A-Lula, Baby What I Say
-Here comes Johnny singing I Gotta Woman  
-Down in the tunnels, trying to make it pay
-He got the action, He got the motion
-Yeah the boy can play
-Dedication, devotion
-Turning all the night time into the day
-\endverse
-
-\beginchorus
-E                              B
-And after all the violence and double talk
-               E                               A
-There's just a song in all the trouble and the strife
-           E7  B                    A        B                     E  A B A B
-You do the walk, you do the walk of life. Yeah, you do the walk of life
-\endchorus
-\endsong
+  \input{songs/dire_straits/walk_of_life.tex}
 
 \end{songs}
 \end{document}
