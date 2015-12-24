@@ -2,7 +2,7 @@
 # Easy Makefile to compile songbook.lytex
 #
 
-.PHONY: clean distclean dist help
+.PHONY: lilyclean clean distclean dist help
 
 # ---------------------------------------------------------------------------------------
 LaTeX=latexmk
@@ -61,14 +61,24 @@ $(MAIN): %: %.lytex $(dataFolder) Makefile
 		"`tput setaf 1`$(OPTIONS)`tput sgr0`"\
 		"`tput setaf 2`$(MAIN).tex`tput sgr0`"
 	@cd $(outputDirectory) &&\
-	  $(LaTeX) $(OPTIONS) $(MAIN).tex -f
-	@echo "\n`tput bold`ln`tput sgr0`"\
+	  $(LaTeX) $(OPTIONS) $(MAIN).tex -f -output-directory=..
+
+# One can link the file in .. instead of generating it there
+#	@echo "\n`tput bold`ln`tput sgr0`"\
 		"`tput setaf 1`-sf`tput sgr0`"\
 		"$(outputDirectory)$(MAIN).pdf"\
 		"`tput setaf 2`$(MAIN).pdf`tput sgr0`"
-	@ln -sf $(outputDirectory)$(MAIN).pdf $(MAIN).pdf
+#	@ln -sf $(outputDirectory)$(MAIN).pdf $(MAIN).pdf
 
-clean:
+# Clean output lilypond directory
+lilyclean:
+	@echo "`tput bold`rm`tput sgr0`"\
+		"`tput setaf 1`--recursive --force --verbose`tput sgr0`"\
+		"`tput setaf 2`$(outputDirectory)`tput sgr0`"
+	@rm --recursive --force --verbose $(outputDirectory)
+
+# Clean current directory
+clean: lilyclean
 	@echo "`tput bold`rm`tput sgr0`"\
 		"`tput setaf 1`--recursive --force --verbose`tput sgr0`"\
 		"`tput setaf 2`*.toc *.log *.out *.aux *.fls *.fdb_latexmk`tput sgr0`"
@@ -85,15 +95,14 @@ now        = $(shell date "+%G-%m-%d_at_%H-%M-%S")
 dist: $(MAIN) clean
 	@cd ..; tar -cvzf $(thisFolder)_of_$(now).tar.gz --exclude-vcs $(thisFolder)/
 
-#	echo $(thisFolder) at $(now)
-
 help:
-	@echo -e \
-		"`tput setaf 1`>> Options available`tput sgr0`\n"\
+	@echo "`tput setaf 1`>> Options available`tput sgr0`\n"\
 		"`tput bold`make`tput sgr0`           "\
-		"Builds `tput setaf 2`\"$(MAIN).tex\"`tput sgr0` trying to use latexmk (if it's not installed, uses latex). Calls the default `tput bold`$(MAIN)`tput sgr0` rule\n"\
+		"Builds `tput setaf 2`\"$(MAIN).lytex\"`tput sgr0` trying to use latexmk (if it's not installed, uses latex). Calls the default `tput bold`$(MAIN)`tput sgr0` rule\n"\
 		"`tput bold`make help`tput sgr0`      "\
 		"Prints this help\n"\
+		"`tput bold`make lilyclean`tput sgr0` "\
+		"Removes `tput setaf 2`$(outputDirectory)`tput sgr0`, the output folder for lilypond files\n" \
 		"`tput bold`make clean`tput sgr0`     "\
 		"Removes `tput setaf 2`*.log *.out *.aux *.fls *.fdb_latexmk`tput sgr0` files\n" \
 		"`tput bold`make distclean`tput sgr0` "\
