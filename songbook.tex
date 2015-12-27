@@ -7,33 +7,33 @@
 \usepackage[T1]{fontenc}
 \usepackage[
   english,%
-  italian,%
+  italian,% <-- Last one is default
 ]{babel}
 \usepackage[
   paper=a4paper,%
 ]{geometry}
 \usepackage{verbatim}
 
-\usepackage[
-  chorded,% <-- That's default (chords + lyrics)
-%  lyric,% <-- To prodoce only lyrics
-]{songs}
-% ---------------------------------------------------------------------------------------
-% Translate the musical notes in your language
-%
-%\notenamesin{A}{B}{C}{D}{E}{F}{G}
-%\notenamesout{LA}{SI}{DO}{RE}{MI}{FA}{SOL}
-% ---------------------------------------------------------------------------------------
+% Settings for songs
+\input{configs/songsConfig.tex}
 
 % Uncomment to use musictex
 %\usepackage{musixtex}
 
+\title{}
+\author{}
+\date{}
+
 \begin{document}
+
+%\maketitle
+%\tableofcontents
 
 \begin{songs}{}
 
-  \input{songs/dire_straits/walk_of_life.tex}
-  \input{songs/rino_gaetano/il_cielo_e_sempre_piu_blu.tex}
+%  \input{songs/dire_straits/walk_of_life.tex}
+%  \input{songs/rino_gaetano/il_cielo_e_sempre_piu_blu.tex}
+  \input{songs/883/hanno_ucciso_luomo_ragno.tex}
 
 \end{songs}
 \end{document}

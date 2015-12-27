@@ -1,0 +1,35 @@
+% Settings for the songs package
+
+\usepackage[
+  chorded,% <-- That's default (chords + lyrics)
+%  lyric,% <-- To prodoce only lyrics
+]{songs}
+
+%\renewcommand{\sharpsymbol}{\ensuremath{^\sharp}}
+%\renewcommand{\sfdefault}{iwona}
+%\renewcommand{\notefont}{\sffamily}
+
+% ---------------------------------------------------------------------------------------
+% Define the 'chorus' in several languages
+\makeatletter
+\newcommand{\newlanguagecommand}[1]{%
+  \newcommand#1{%
+    \@ifundefined{\string#1\languagename}
+      {``No def of \texttt{\string#1} for \languagename''}
+      {\@nameuse{\string#1\languagename}}%
+  }%
+}
+\newcommand{\addtolanguagecommand}[3]{%
+  \@namedef{\string#1#2}{#3}}
+\makeatother
+\newlanguagecommand{\chorusString}
+\addtolanguagecommand{\chorusString}{english}{Chorus}
+\addtolanguagecommand{\chorusString}{italian}{Ritornello}
+\renewcommand{\everychorus}{\textnote{\chorusString}}
+
+% ---------------------------------------------------------------------------------------
+% Translate the musical notes in your language
+%
+%\notenamesin{A}{B}{C}{D}{E}{F}{G}
+%\notenamesout{LA}{SI}{DO}{RE}{MI}{FA}{SOL}
+% ---------------------------------------------------------------------------------------
